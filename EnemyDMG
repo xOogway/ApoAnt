@@ -1,0 +1,15 @@
+using UnityEngine;
+using System.Collections;
+
+public class EnemyDMG : MonoBehaviour {
+
+	public int death = 1;
+	
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		
+		LiveManager.AddDeath(death);
+		
+		Destroy(gameObject);		
+	}
+}
