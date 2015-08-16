@@ -1,0 +1,15 @@
+using UnityEngine;
+using System.Collections;
+
+public class CoinPickUp : MonoBehaviour {
+	
+	public int pointToAdd;
+	
+	void OnTriggerEnter2D(Collider2D other)
+	{
+
+		ScoreManager.AddPoints(pointToAdd);
+
+		Destroy(gameObject);		
+	}
+}
