@@ -1,0 +1,37 @@
+using UnityEngine;
+using System.Collections;
+using UnityEngine.UI;
+
+public class LiveManager : MonoBehaviour {
+
+	public static int lives;
+	Text text;
+	
+	void Start () {
+		text = GetComponent<Text> ();
+		
+		lives = 3;
+	}
+
+	void Update () {
+		if(lives < 0)
+			lives = 0;
+		text.text = "" + lives;
+	}
+	
+	public static void AddDeath (int pointsToAdd)
+	{
+		lives -= pointsToAdd;
+	}
+
+	public static void AddLive (int pointsToAdd)
+	{
+		lives += pointsToAdd;
+	}
+
+	public static void Reset()
+	{
+		lives = 3;
+	}
+	
+}
