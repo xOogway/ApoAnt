@@ -1,0 +1,30 @@
+using UnityEngine;
+using System.Collections;
+
+public class AniController : MonoBehaviour {
+  
+    bool facingRight = true;
+    Controller2D pc;
+    Animator anim;
+    bool left = false;
+
+    void Start () {
+        anim = GetComponent<Animator>();
+        pc = GetComponent<Controller2D>();
+    }
+
+    void Update()
+    {
+        if(pc.Speed<0)
+        {
+            left = true;
+        }
+        else
+        {
+            left = false;
+        }
+
+        anim.SetBool("Left", left);
+        anim.SetFloat("Speed", pc.Speed);
+    }
+}
