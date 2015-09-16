@@ -1,0 +1,43 @@
+using UnityEngine;
+using System.Collections;
+
+public class DmgPlayer : MonoBehaviour
+{
+
+    public LevelManager levelManager;
+    public Rigidbody2D rb;
+    public Controller2D ct;
+    float force = 5f;
+    private Player player;
+    Vector3 Knockback = new Vector3(5,10);
+
+    void Start()
+    {
+        levelManager = FindObjectOfType<LevelManager>();
+        player = FindObjectOfType<Player>();
+        ct = GetComponent<Controller2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.name == "Player")
+        {
+            LiveManager.AddDeath(1);
+            if (other.transform.position.x < transform.position.x)
+            {
+                player.velocity = new Vector3(-20, 30);
+            }
+            else
+            {
+                player.velocity = new Vector3(20, 30);
+            }
+        }
+    }
+}
