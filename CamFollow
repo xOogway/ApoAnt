@@ -1,0 +1,23 @@
+using UnityEngine;
+using System.Collections;
+
+public class CamFollow : MonoBehaviour {
+	
+	public Transform target;
+	public float smoothTime = 0.3f;
+	private Transform thisTransform;
+	private Vector2 velocity;
+	
+	
+	void Start(){
+		thisTransform = transform;
+	}
+	
+	void Update () {
+		Vector3 vec = thisTransform.position;
+		vec.y = Mathf.SmoothDamp(thisTransform.position.y,target.position.y,ref velocity.y, smoothTime);
+		vec.x = Mathf.SmoothDamp(thisTransform.position.x,target.position.x,ref velocity.x, smoothTime);
+		thisTransform.position = vec;
+		
+	}
+}
